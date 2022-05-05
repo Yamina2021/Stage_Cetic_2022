@@ -1,0 +1,39 @@
+
+---
+# tasks file for stack_lamp
+
+- name: "[lamp] - install LAMP"
+  apt:
+   name: "{{ item }}"
+   state: present
+  become: yes
+  with_items:
+    - apache2
+    - php7.4-common
+    - php7.4-mysql
+    - libapache2-mod-php7.4
+    - python3-pip
+    - python3-dev
+    - python3-mysqldb
+    - wget
+    
+- name: Install Mysql
+  apt:
+    state: present
+    name: "{{packages}}"
+  vars:
+    packages:
+    - mariadb-server
+    - mariadb-client
+    
+- name: "[lamp] - start apache2 mysql "
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  become: yes
+  with_items:
+    - apache2
+    - mariadb
+
+

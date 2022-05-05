@@ -1,0 +1,17 @@
+---
+# tasks file for Database
+
+
+- name: "[lamp] - create Database"
+  become: yes
+  community.mysql.mysql_db:
+    name: cetic_data
+    state: present
+
+- name: Create database user with name 'mouns' and password '123456' with all database privileges
+  become: yes
+  community.mysql.mysql_user:
+    name: mouns
+    password: 123456
+    priv: '*.*:ALL'
+    state: present

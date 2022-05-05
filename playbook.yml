@@ -1,0 +1,41 @@
+---
+- name: create user
+  hosts: prod
+  become: true
+
+
+  tasks:
+  
+  - name: Add the user 'mouns' to group root
+    ansible.builtin.user:
+      name: mouns
+      home: /home/mouns
+      comment: "mouns stage"
+      group: root
+      generate_ssh_key: yes
+
+  - name: add sudoers file for mouns
+    copy:
+      src: file/sudoer_mouns   #il faut d abord creer ce fichier sur le server
+      dest: /etc/sudoers.d/mouns  ##fichier destination machine distante
+      owner: root
+      group: root
+  - name: Run the equivalent of "apt-get update" 
+    apt:
+      update_cache: yes
+
+  - name: install htop package
+    action: apt name=htop state=present update_cache=yes
+  
+  - name: Install nano
+    ansible.builtin.package:
+      name: nano
+      state: present
+
+  - name: Set a hostname
+    ansible.builtin.hostname:
+      name: MOUNS
+
+  - name: Include the lamp role
+    include_role:
+      name: lamp

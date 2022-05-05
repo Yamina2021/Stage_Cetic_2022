@@ -1,0 +1,9 @@
+
+---
+# tasks file for wordpress
+
+- name: "[lamp] - install LAMP"
+  include: install_stack_LAMP.yml
+   
+- name: "[lamp] - install Database"
+  include: install_db.yml
