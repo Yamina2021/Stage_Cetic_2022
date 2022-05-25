@@ -2,16 +2,16 @@
 # tasks file for Database
 
 
-- name: "[lamp] - create Database"
+- name: "[lamp] - Create DB"
+  mysql_db:
+    name: "{{ mysql_db }}"
   become: yes
-  community.mysql.mysql_db:
-    name: cetic_data
-    state: present
 
-- name: Create database user with name 'mouns' and password '123456' with all database privileges
+- name: "[lamp] - Create user"
+  mysql_user:
+    name: "{{ mysql_user }}"
+    password: "{{ mysql_password }}"
+    priv: "*.*:ALL"
   become: yes
-  community.mysql.mysql_user:
-    name: mouns
-    password: 123456
-    priv: '*.*:ALL'
-    state: present
+
+

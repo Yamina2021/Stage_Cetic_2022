@@ -7,3 +7,9 @@
    
 - name: "[lamp] - install Database"
   include: install_db.yml
+
+- name: "[lamp] - install Wordpress"
+  include: install_wordpress.yml
+
+- name: "[lamp] - install Drupal"
+  include: install_drupal.yml

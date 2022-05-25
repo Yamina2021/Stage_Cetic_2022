@@ -1,3 +1,15 @@
 ---
 
-#
+
+
+
+# default variables for mysql
+
+mysql_db: "cetic_data"
+mysql_user: "mouns"
+mysql_password: "mounsmysql"
+
+
+# wordpress
+
+wordpress_source: "https://wordpress.org/latest.tar.gz"
