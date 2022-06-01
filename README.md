@@ -1,6 +1,6 @@
 # STAGE
 
-le déploiement et la configuration automatisée de machines virtuelles avec l’utilisation des technologies Terraform et
+le déploiement et la configuration automatisée de machines virtuelles avec l’utilisation de technologie
 Ansible.
 
 ## Getting started
